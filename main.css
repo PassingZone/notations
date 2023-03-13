@@ -96,6 +96,7 @@ td:last-child {
     top: 0.5em;
 }
 
+/* Fancy hover */
 table:has(.m-line .fancy-hover:hover) tr:not(.m-line) td[data-beat] {
     opacity: 0.3;
 }
