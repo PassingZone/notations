@@ -1,6 +1,8 @@
 import { capture } from "./screenshot.js";
 
 let selectedIndex = 0;
+let allArrows = [];
+
 const notations = [
     ["cA sA iA", "#1.1", "Aidan"],
     ["cA sB iA", "#1.2", "Casbia"],
@@ -77,11 +79,16 @@ function applyNotation (patternIndex) {
 
     const notationBeats = value.split(" ");
     const manipCells = document.querySelectorAll(".m-line td");
+
+    allArrows.forEach(arrow => arrow.remove());
+    allArrows = [];
+
     for (let i = 0; i < notationBeats.length; i++) {
         const instruction = notationBeats[i][0].toUpperCase();
         const toJuggler = notationBeats[i][1];
         const fromJuggler = getSourceOfThrow(i, toJuggler);
-        const cell = manipCells[1 + 2 * i];
+        const beat = 1 + 2 * i;
+        const cell = manipCells[beat];
         cell.innerHTML =
             `${instruction}&nbsp;<span class="supsub">` +
             `<sup>${fromJuggler}</sup>` +
@@ -89,7 +96,32 @@ function applyNotation (patternIndex) {
             `</span>`;
         cell.setAttribute("data-from", fromJuggler);
         cell.classList.add("fancy-hover");
+
+        const fromCell = document.querySelector(
+            `table tr[data-juggler="${fromJuggler}"] td[data-beat="${beat}"]`,
+        );
+        const toCell = document.querySelector(
+            `table tr[data-juggler="${toJuggler}"] td[data-beat="${beat + 1}"]`,
+        );
+
+        const arrow = arrowLine(
+            getCenterPoint(fromCell, 0.2),
+            getCenterPoint(toCell, -0.2),
+            {
+                curvature: 0,
+                color: "orange",
+                thickness: 1.5,
+            },
+        );
+        allArrows.push(arrow);
     }
+}
+function getCenterPoint (elem, bias) {
+    const rect = elem.getBoundingClientRect();
+    return {
+        x: rect.x + rect.width * (0.5 + bias),
+        y: rect.y + rect.height / 2,
+    };
 }
 
 /**
