@@ -1,60 +1,4 @@
-import { saveAs } from "./FileSaver.js";
-
-let stream = null;
-async function initCapture () {
-    const mainContentArea = document.querySelector("main");
-    const cropTarget = await CropTarget.fromElement(mainContentArea);
-
-    stream = await navigator.mediaDevices.getDisplayMedia({
-        preferCurrentTab: true,
-    });
-    const [track] = stream.getVideoTracks();
-
-    await track.cropTo(cropTarget);
-}
-
-async function capture (notationIndex) {
-    if (!stream) {
-        await initCapture();
-    }
-
-    const canvas = await drawToCanvas(stream);
-    const num = notations[notationIndex][1].substr(1);
-    canvas.toBlob(blob => {
-        saveAs(blob, `notation_${num}.png`);
-    });
-    // const frame = canvas.toDataURL("image/png");
-    // const out = document.createElement("img");
-    // out.src = frame;
-    // out.style.border = "1px solid white";
-    // document.body.appendChild(out);
-}
-
-async function captureAll () {
-    for (let i = 0; i < notations.length; i++) {
-        console.log("Let's go:", notations[i]);
-        applyNotation(i);
-        await new Promise(r => setTimeout(r, 100));
-        await capture(i);
-    }
-}
-
-/* Utils */
-async function drawToCanvas (stream) {
-    const canvas = document.createElement("canvas");
-    const video = document.createElement("video");
-    video.srcObject = stream;
-
-    // Play it.
-    await video.play();
-
-    // Draw one video frame to canvas.
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0);
-
-    return canvas;
-}
+import { capture } from "./screenshot.js";
 
 let selectedIndex = 0;
 const notations = [
@@ -100,38 +44,64 @@ patternSelect.addEventListener("change", () => {
     applyNotation(selectedIndex);
 });
 applyNotation(0);
+
+const mainArea = document.querySelector("main");
 document.querySelector(".screenshot-button").addEventListener("click", () => {
-    capture(selectedIndex);
+    capture(mainArea, getPatternName(selectedIndex));
 });
-document.querySelector(".saveall-button").addEventListener("click", captureAll);
+document
+    .querySelector(".saveall-button")
+    .addEventListener("click", async () => {
+        for (let i = 0; i < notations.length; i++) {
+            applyNotation(i);
+            await new Promise(r => setTimeout(r, 100));
+            await capture(mainArea, getPatternName(i));
+        }
+    });
 
-// setInterval(() => {
-// 	selectedIndex = (selectedIndex + 1) % 27;
-// 	applyNotation(...notations[selectedIndex]);
-// }, 100);
+function getPatternName (i) {
+    const patternNum = notations[i][1].substr(1);
+    return `notation_${patternNum}`;
+}
 
-function applyNotation (notationIndex) {
-    const [value, number, name] = notations[notationIndex];
+function applyNotation (patternIndex) {
+    const [value, number, name] = notations[patternIndex];
 
     document.querySelector(".pattern-name").innerText = name;
     document.querySelector(".pattern-number").innerText = number;
-    const notationBeats = value.split(" ");
+
+    // Calculate order of juggler roles.
     const interceptedJuggler = value.match(/i([ABC])/)[1];
-    const mantra = "ABC".replace(interceptedJuggler, interceptedJuggler + "M");
-    document.querySelector(".mantra").innerText = mantra;
+    const cycle = "ABC".replace(interceptedJuggler, interceptedJuggler + "M");
+    document.querySelector(".cycle").innerText = cycle;
+
+    const notationBeats = value.split(" ");
     const manipCells = document.querySelectorAll(".m-line td");
     for (let i = 0; i < notationBeats.length; i++) {
         const instruction = notationBeats[i][0].toUpperCase();
         const toJuggler = notationBeats[i][1];
-        const partner = i == 1 ? "C" : "B";
-        const fromJuggler =
-            toJuggler === partner
-                ? "A"
-                : toJuggler === "A"
-                ? partner
-                : toJuggler;
-        manipCells[
-            1 + 2 * i
-        ].innerHTML = `${instruction}&nbsp;<span class="supsub"><sup>${fromJuggler}</sup><sub>${toJuggler}</sub>`;
+        const fromJuggler = getSourceOfThrow(i, toJuggler);
+        manipCells[1 + 2 * i].innerHTML =
+            `${instruction}&nbsp;<span class="supsub">` +
+            `<sup>${fromJuggler}</sup>` +
+            `<sub>${toJuggler}</sub>` +
+            `</span>`;
     }
+}
+
+/**
+ * Returns the corresponding source juggler based on a 0-based beat.
+ * This is specific to scrambled variations.
+ */
+function getSourceOfThrow (beatIndex, toJuggler) {
+    // Who is the feeder A passing to on this beat?
+    const partner = beatIndex == 1 ? "C" : "B";
+    if (toJuggler === partner) {
+        return "A";
+    }
+    if (toJuggler === "A") {
+        return partner;
+    }
+    // Self throw
+    return toJuggler;
 }
