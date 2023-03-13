@@ -44,6 +44,7 @@ th,
 td {
     width: 3.2em;
     text-align: center;
+    transition: opacity 200ms linear, color 200ms linear;
 }
 
 th {
@@ -93,4 +94,46 @@ td:last-child {
 }
 .supsub sub {
     top: 0.5em;
+}
+
+table:has(.m-line .fancy-hover:hover) tr:not(.m-line) td[data-beat] {
+    opacity: 0.3;
+}
+
+table:has(.m-line td[data-from="A"][data-beat="1"]:hover)
+    tr[data-juggler="A"]
+    td[data-beat="1"],
+table:has(.m-line td[data-from="A"][data-beat="3"]:hover)
+    tr[data-juggler="A"]
+    td[data-beat="3"],
+table:has(.m-line td[data-from="A"][data-beat="5"]:hover)
+    tr[data-juggler="A"]
+    td[data-beat="5"],
+table:has(.m-line td[data-from="B"][data-beat="1"]:hover)
+    tr[data-juggler="B"]
+    td[data-beat="1"],
+table:has(.m-line td[data-from="B"][data-beat="3"]:hover)
+    tr[data-juggler="B"]
+    td[data-beat="3"],
+table:has(.m-line td[data-from="B"][data-beat="5"]:hover)
+    tr[data-juggler="B"]
+    td[data-beat="5"],
+table:has(.m-line td[data-from="C"][data-beat="1"]:hover)
+    tr[data-juggler="C"]
+    td[data-beat="1"],
+table:has(.m-line td[data-from="C"][data-beat="3"]:hover)
+    tr[data-juggler="C"]
+    td[data-beat="3"],
+table:has(.m-line td[data-from="C"][data-beat="5"]:hover)
+    tr[data-juggler="C"]
+    td[data-beat="5"] {
+    opacity: 1;
+    color: orange;
+}
+
+.m-line .fancy-hover {
+    cursor: default;
+}
+.m-line .fancy-hover:hover {
+    color: orange;
 }

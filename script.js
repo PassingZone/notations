@@ -81,11 +81,14 @@ function applyNotation (patternIndex) {
         const instruction = notationBeats[i][0].toUpperCase();
         const toJuggler = notationBeats[i][1];
         const fromJuggler = getSourceOfThrow(i, toJuggler);
-        manipCells[1 + 2 * i].innerHTML =
+        const cell = manipCells[1 + 2 * i];
+        cell.innerHTML =
             `${instruction}&nbsp;<span class="supsub">` +
             `<sup>${fromJuggler}</sup>` +
             `<sub>${toJuggler}</sub>` +
             `</span>`;
+        cell.setAttribute("data-from", fromJuggler);
+        cell.classList.add("fancy-hover");
     }
 }
 
