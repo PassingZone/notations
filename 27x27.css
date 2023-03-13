@@ -1,0 +1,94 @@
+.supsub {
+    display: inline-block;
+}
+
+.supsub sup,
+.supsub sub {
+    position: relative;
+    display: block;
+    font-size: 0.8em;
+    line-height: 1;
+}
+
+.supsub sup {
+    top: 0.3em;
+}
+.supsub sub {
+    top: 0.5em;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", "Righteous", sans-serif;
+    font-size: 340%;
+    line-height: 200%;
+    background-color: #321d5b;
+    color: #fff;
+    text-align: center;
+}
+
+main {
+    /*border: 1px solid red;*/
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    --table-border: rgba(255, 255, 255, 0.4);
+}
+
+.pattern-name {
+    margin-bottom: 0;
+}
+.pattern-number {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    width: 3.2em;
+    text-align: center;
+}
+
+th {
+    border-bottom: 3px solid var(--table-border);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+tr:last-child td {
+    border-top: 3px solid var(--table-border);
+}
+
+th:first-child,
+td:first-child {
+    font-family: Righteous;
+    border-right: 3px solid var(--table-border);
+}
+
+th:last-child,
+td:last-child {
+    font-family: Righteous;
+    border-left: 3px solid var(--table-border);
+}
+
+.mantra-container {
+    color: #fff;
+    opacity: 0.5;
+}
+.mantra {
+    padding-left: 0.5em;
+    letter-spacing: 0.5em;
+}

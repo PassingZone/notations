@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="27x27.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Righteous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Raleway:wght@300-800"
+        />
+    </head>
+    <body>
+        <main>
+            <h2 class="pattern-name">Wow</h2>
+            <h3 class="pattern-number">Wow2</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>R</th>
+                        <th>L</th>
+                        <th>R</th>
+                        <th>L</th>
+                        <th>R</th>
+                        <th>L</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>P<sub>B</sub></td>
+                        <td>S</td>
+                        <td>P<sub>C</sub></td>
+                        <td>S</td>
+                        <td>P<sub>B</sub></td>
+                        <td>S</td>
+                        <td>&rarr; B</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>P<sub>A</sub></td>
+                        <td>S</td>
+                        <td>S</td>
+                        <td>S</td>
+                        <td>P<sub>A</sub></td>
+                        <td>S</td>
+                        <td>&rarr; C</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>S</td>
+                        <td>S</td>
+                        <td>P<sub>A</sub></td>
+                        <td>S</td>
+                        <td>S</td>
+                        <td>S</td>
+                        <td>&rarr; A</td>
+                    </tr>
+                    <tr class="m-line">
+                        <td>M</td>
+                        <td>
+                            C
+                            <span class="supsub"><sup>B</sup><sub>B</sub></span>
+                        </td>
+                        <td></td>
+                        <td>
+                            S
+                            <span class="supsub"><sup>B</sup><sub>B</sub></span>
+                        </td>
+                        <td></td>
+                        <td>
+                            I
+                            <span class="supsub"><sup>C</sup><sub>C</sub></span>
+                        </td>
+                        <td></td>
+                        <td>&rarr; M</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mantra-container">
+                Cycle: <span class="mantra"></span>
+            </div>
+        </main>
+        <select class="pattern-select">
+            <option disabled>...</option>
+        </select>
+        <button class="screenshot-button">Screenshot</button>
+        <button class="saveall-button">Save 'em all!</button>
+
+        <script src="script.js" type="module"></script>
+    </body>
+</html>
