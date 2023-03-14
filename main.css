@@ -3,6 +3,7 @@ html {
     padding: 0;
     --table-border: rgba(255, 255, 255, 0.4);
     --passingzone-color: #321d5b;
+    --passingzone-color-light: #4b3673;
 }
 
 body {
@@ -152,4 +153,76 @@ td:last-child {
     height: 100%;
     pointer-events: none;
     transition: opacity 200ms linear;
+}
+
+.settings {
+    display: flex;
+    justify-content: center;
+}
+
+.settings button {
+    color: white;
+    border: none;
+    background: var(--passingzone-color-light);
+    margin-left: 10px;
+    padding: 0 10px;
+}
+
+.custom-select {
+    position: relative;
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.custom-select select {
+    display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+    background-color: var(--passingzone-color-light);
+    width: 280px;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+    position: absolute;
+   /* content: "\25C4";*/
+    font-family: 'Material Icons';
+    font-size: 25px;
+    content: "expand_more";
+    color: var(--table-border);
+    right: 5px;
+    transition: .2s;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+    transform: scaleY(-1);
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+    color: #ffffff;
+    padding: 2px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+    position: absolute;
+    background-color: var(--passingzone-color-light);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
 }

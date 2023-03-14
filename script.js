@@ -36,6 +36,7 @@ const notations = [
 const patternSelect = document.querySelector(".pattern-select");
 notations.forEach(([notation, number, name], i) => {
     const option = document.createElement("option");
+    option.classList += "pattern"
     option.innerText = `${notation} - ${number} - ${name}`;
     option.value = i;
     patternSelect.appendChild(option);

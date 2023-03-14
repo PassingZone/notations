@@ -10,6 +10,8 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Raleway:wght@300-800"
         />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet"/>
         <script src="https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js"></script>
         <title>Interactive pattern notations - passing.zone</title>
     </head>
@@ -94,12 +96,17 @@
                 Cycle: <span class="cycle"></span>
             </div>
         </main>
-        <select class="pattern-select">
-            <option disabled>...</option>
-        </select>
-        <button class="screenshot-button">Screenshot</button>
-        <button class="saveall-button">Save 'em all!</button>
+        <div class="settings">
+            <div class="custom-select">
+                <select class="pattern-select">
+                    <option disabled>...</option>
+                </select>
+            </div>
+            <button class="screenshot-button">Screenshot</button>
+            <button class="saveall-button">Save 'em all!</button>
+        </div>
 
         <script src="script.js" type="module"></script>
+        <script src="select.js" type="module"></script>
     </body>
 </html>
