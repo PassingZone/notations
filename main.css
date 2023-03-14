@@ -1,155 +1,155 @@
 html {
-    margin: 0;
-    padding: 0;
-    --table-border: rgba(255, 255, 255, 0.4);
-    --passingzone-color: #321d5b;
+  margin: 0;
+  padding: 0;
+  --table-border: rgba(255, 255, 255, 0.4);
+  --passingzone-color: #321d5b;
+  --passingzone-color-light: #4b3673;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Raleway", sans-serif;
-    /*font-size: 340%; <-- this is a good size for 1920x1080p screenshots */
-    font-size: 2.8vw;
-    line-height: 200%;
-    background-color: var(--passingzone-color);
-    color: #fff;
-    text-align: center;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+  /*font-size: 340%; <-- this is a good size for 1920x1080p screenshots */
+  font-size: 2.8vw;
+  line-height: 200%;
+  background-color: var(--passingzone-color);
+  text-align: center;
 }
 
 main {
-    /*border: 1px solid red;*/
-    /*width: 1920px;*/
-    /*height: 1080px;*/
-    aspect-ratio: 16 / 9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /*border: 1px solid red;*/
+  /*width: 1920px;*/
+  /*height: 1080px;*/
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pattern-name {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
+
 .pattern-number {
-    margin-top: 0;
-    margin-bottom: 0.25em;
-    color: rgba(255, 255, 255, 0.7);
+  margin-top: 0;
+  margin-bottom: 0.25em;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
-
-th,
-td {
-    width: 3.2em;
-    text-align: center;
-    transition: opacity 200ms linear, color 200ms linear;
+table th,
+table td {
+  width: 3.2em;
+  text-align: center;
+  transition: opacity 200ms linear, color 200ms linear;
 }
-
-th {
-    border-bottom: 3px solid var(--table-border);
-    color: rgba(255, 255, 255, 0.5);
+table tr:last-child td {
+  border-top: 3px solid var(--table-border);
 }
-
-tr:last-child td {
-    border-top: 3px solid var(--table-border);
+table th:first-child,
+table td:first-child {
+  font-family: "Righteous";
+  border-right: 3px solid var(--table-border);
 }
-
-th:first-child,
-td:first-child {
-    font-family: "Righteous";
-    border-right: 3px solid var(--table-border);
+table th:last-child,
+table td:last-child {
+  font-family: "Righteous";
+  border-left: 3px solid var(--table-border);
 }
-
-th:last-child,
-td:last-child {
-    font-family: "Righteous";
-    border-left: 3px solid var(--table-border);
+table .line__m td {
+  border-top: 3px solid var(--table-border);
+}
+table .line__m.fancy-hover {
+  cursor: default;
+}
+table .line__m.fancy-hover:hover {
+  color: orange;
+}
+table .line__hands th {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+}
+table .line__underline {
+  border-bottom: 3px solid var(--table-border);
 }
 
 .cycle-container {
-    color: #fff;
-    opacity: 0.5;
+  color: #fff;
+  opacity: 0.5;
 }
-.cycle {
-    padding-left: 0.5em;
-    letter-spacing: 0.5em;
+.cycle-container .cycle {
+  padding-left: 0.5em;
+  letter-spacing: 0.5em;
 }
 
 .supsub {
-    display: inline-block;
+  display: inline-block;
 }
-
-.supsub sup,
-.supsub sub {
-    position: relative;
-    display: block;
-    font-size: 0.8em;
-    line-height: 1;
+.supsub sup, .supsub sub {
+  position: relative;
+  display: block;
+  font-size: 0.8em;
+  line-height: 1;
 }
-
 .supsub sup {
-    top: 0.3em;
+  top: 0.3em;
 }
 .supsub sub {
-    top: 0.5em;
+  top: 0.5em;
 }
 
 /* Fancy hover */
-.table-container:has(.m-line .fancy-hover:hover) tr:not(.m-line) td[data-beat],
-.table-container:has(.m-line .fancy-hover:hover) .svg-arrows {
-    opacity: 0.3;
+.table-container:has(.line__m .fancy-hover:hover) tr:not(.line__m) td[data-beat],
+.table-container:has(.line__m .fancy-hover:hover) .svg-arrows {
+  opacity: 0.3;
 }
 
-.table-container:has(.m-line td[data-from="A"][data-beat="1"]:hover)
-    [data-juggler="A"]
-    [data-beat="1"],
-.table-container:has(.m-line td[data-from="A"][data-beat="3"]:hover)
-    [data-juggler="A"]
-    [data-beat="3"],
-.table-container:has(.m-line td[data-from="A"][data-beat="5"]:hover)
-    [data-juggler="A"]
-    [data-beat="5"],
-.table-container:has(.m-line td[data-from="B"][data-beat="1"]:hover)
-    [data-juggler="B"]
-    [data-beat="1"],
-.table-container:has(.m-line td[data-from="B"][data-beat="3"]:hover)
-    [data-juggler="B"]
-    [data-beat="3"],
-.table-container:has(.m-line td[data-from="B"][data-beat="5"]:hover)
-    [data-juggler="B"]
-    [data-beat="5"],
-.table-container:has(.m-line td[data-from="C"][data-beat="1"]:hover)
-    [data-juggler="C"]
-    [data-beat="1"],
-.table-container:has(.m-line td[data-from="C"][data-beat="3"]:hover)
-    [data-juggler="C"]
-    [data-beat="3"],
-.table-container:has(.m-line td[data-from="C"][data-beat="5"]:hover)
-    [data-juggler="C"]
-    [data-beat="5"] {
-    opacity: 1;
-    color: orange;
-}
-
-.m-line .fancy-hover {
-    cursor: default;
-}
-.m-line .fancy-hover:hover {
-    color: orange;
+.table-container:has(.line__m td[data-from=A][data-beat="1"]:hover) [data-juggler=A] [data-beat="1"],
+.table-container:has(.line__m td[data-from=A][data-beat="3"]:hover) [data-juggler=A] [data-beat="3"],
+.table-container:has(.line__m td[data-from=A][data-beat="5"]:hover) [data-juggler=A] [data-beat="5"],
+.table-container:has(.line__m td[data-from=B][data-beat="1"]:hover) [data-juggler=B] [data-beat="1"],
+.table-container:has(.line__m td[data-from=B][data-beat="3"]:hover) [data-juggler=B] [data-beat="3"],
+.table-container:has(.line__m td[data-from=B][data-beat="5"]:hover) [data-juggler=B] [data-beat="5"],
+.table-container:has(.line__m td[data-from=C][data-beat="1"]:hover) [data-juggler=C] [data-beat="1"],
+.table-container:has(.line__m td[data-from=C][data-beat="3"]:hover) [data-juggler=C] [data-beat="3"],
+.table-container:has(.line__m td[data-from=C][data-beat="5"]:hover) [data-juggler=C] [data-beat="5"] {
+  opacity: 1;
+  color: orange;
 }
 
 /* Arrows */
 .table-container {
-    position: relative;
+  position: relative;
 }
+
 .svg-arrows {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    transition: opacity 200ms linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 200ms linear;
 }
+
+.settings {
+  display: flex;
+  justify-content: center;
+}
+.settings .pattern-select {
+  border: none;
+  height: 39px;
+  background-color: var(--passingzone-color-light);
+  color: white;
+}
+.settings button {
+  border: none;
+  color: white;
+  background: var(--passingzone-color-light);
+  margin-left: 10px;
+  padding: 0 10px;
+}/*# sourceMappingURL=main.css.map */

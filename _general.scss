@@ -1,0 +1,29 @@
+html {
+    margin: 0;
+    padding: 0;
+    --table-border: rgba(255, 255, 255, 0.4);
+    --passingzone-color: #321d5b;
+    --passingzone-color-light: #4b3673;
+}
+
+body {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    /*font-size: 340%; <-- this is a good size for 1920x1080p screenshots */
+    font-size: 2.8vw;
+    line-height: 200%;
+    background-color: var(--passingzone-color);
+    text-align: center;
+}
+
+main {
+    /*border: 1px solid red;*/
+    /*width: 1920px;*/
+    /*height: 1080px;*/
+    aspect-ratio: 16 / 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
