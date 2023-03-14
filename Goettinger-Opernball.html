@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Righteous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Raleway:wght@300-800"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <title>Interactive pattern notations - passing.zone</title>
+    </head>
+    <body>
+        <main>
+            <h2 class="pattern-name">Göttinger Opernball</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr class="line__hands line__underline">
+                            <th></th>
+                            <th>R</th>
+                            <th>L</th>
+                            <th>R</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-juggler="A">
+                            <td>A</td>
+                            <td data-beat="1">$$P_C$$</td>
+                            <td data-beat="2">$$P_E$$</td>
+                            <td data-beat="3">S</td>
+                            <td>&rarr; B</td>
+                        </tr>
+                        <tr data-juggler="B">
+                            <td>B</td>
+                            <td data-beat="1">$$P_D$$</td>
+                            <td data-beat="2">$$C_A$$</td>
+                            <td data-beat="3">zip</td>
+                            <td>&rarr; C</td>
+                        </tr>
+                        <tr data-juggler="C">
+                            <td>C</td>
+                            <td data-beat="1">$$S^A_E$$</td>
+                            <td data-beat="2">-</td>
+                            <td data-beat="3">-</td>
+                            <td>&rarr; D</td>
+                        </tr>
+                        <tr data-juggler="D">
+                            <td>D</td>
+                            <td data-beat="1">$$S^B_A$$</td>
+                            <td data-beat="2">zip</td>
+                            <td data-beat="3">-</td>
+                            <td>&rarr; E</td>
+                        </tr>
+                        <tr data-juggler="E">
+                            <td>E</td>
+                            <td data-beat="1">$$I_B^A$$</td>
+                            <td data-beat="2">-</td>
+                            <td data-beat="3">S</td>
+                            <td>&rarr; A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cycle-container">
+                Cycle: <span class="cycle"></span>
+            </div>
+        </main>
+        <div class="settings">
+            <select class="pattern-select">
+                <option disabled>...</option>
+            </select>
+            <button class="screenshot-button">Screenshot</button>
+            <button class="saveall-button">Save 'em all!</button>
+        </div>
+    </body>
+</html>
