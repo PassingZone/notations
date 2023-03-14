@@ -14,74 +14,81 @@
     </head>
     <body>
         <main>
-            <svg class="banana"></svg>
             <h2 class="pattern-name">Wow</h2>
             <h3 class="pattern-number">Wow2</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>R</th>
-                        <th>L</th>
-                        <th>R</th>
-                        <th>L</th>
-                        <th>R</th>
-                        <th>L</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-juggler="A">
-                        <td>A</td>
-                        <td data-beat="1">P<sub>B</sub></td>
-                        <td data-beat="2">S</td>
-                        <td data-beat="3">P<sub>C</sub></td>
-                        <td data-beat="4">S</td>
-                        <td data-beat="5">P<sub>B</sub></td>
-                        <td data-beat="6">S</td>
-                        <td>&rarr; B</td>
-                    </tr>
-                    <tr data-juggler="B">
-                        <td>B</td>
-                        <td data-beat="1">P<sub>A</sub></td>
-                        <td data-beat="2">S</td>
-                        <td data-beat="3">S</td>
-                        <td data-beat="4">S</td>
-                        <td data-beat="5">P<sub>A</sub></td>
-                        <td data-beat="6">S</td>
-                        <td>&rarr; C</td>
-                    </tr>
-                    <tr data-juggler="C">
-                        <td>C</td>
-                        <td data-beat="1">S</td>
-                        <td data-beat="2">S</td>
-                        <td data-beat="3">P<sub>A</sub></td>
-                        <td data-beat="4">S</td>
-                        <td data-beat="5">S</td>
-                        <td data-beat="6">S</td>
-                        <td>&rarr; A</td>
-                    </tr>
-                    <tr class="m-line">
-                        <td>M</td>
-                        <td data-beat="1">
-                            C
-                            <span class="supsub"><sup>B</sup><sub>B</sub></span>
-                        </td>
-                        <td data-beat="2"></td>
-                        <td data-beat="3">
-                            S
-                            <span class="supsub"><sup>B</sup><sub>B</sub></span>
-                        </td>
-                        <td data-beat="4"></td>
-                        <td data-beat="5">
-                            I
-                            <span class="supsub"><sup>C</sup><sub>C</sub></span>
-                        </td>
-                        <td data-beat="6"></td>
-                        <td>&rarr; M</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>R</th>
+                            <th>L</th>
+                            <th>R</th>
+                            <th>L</th>
+                            <th>R</th>
+                            <th>L</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-juggler="A">
+                            <td>A</td>
+                            <td data-beat="1">P<sub>B</sub></td>
+                            <td data-beat="2">S</td>
+                            <td data-beat="3">P<sub>C</sub></td>
+                            <td data-beat="4">S</td>
+                            <td data-beat="5">P<sub>B</sub></td>
+                            <td data-beat="6">S</td>
+                            <td>&rarr; B</td>
+                        </tr>
+                        <tr data-juggler="B">
+                            <td>B</td>
+                            <td data-beat="1">P<sub>A</sub></td>
+                            <td data-beat="2">S</td>
+                            <td data-beat="3">S</td>
+                            <td data-beat="4">S</td>
+                            <td data-beat="5">P<sub>A</sub></td>
+                            <td data-beat="6">S</td>
+                            <td>&rarr; C</td>
+                        </tr>
+                        <tr data-juggler="C">
+                            <td>C</td>
+                            <td data-beat="1">S</td>
+                            <td data-beat="2">S</td>
+                            <td data-beat="3">P<sub>A</sub></td>
+                            <td data-beat="4">S</td>
+                            <td data-beat="5">S</td>
+                            <td data-beat="6">S</td>
+                            <td>&rarr; A</td>
+                        </tr>
+                        <tr class="m-line">
+                            <td>M</td>
+                            <td data-beat="1">
+                                C
+                                <span class="supsub"
+                                    ><sup>B</sup><sub>B</sub></span
+                                >
+                            </td>
+                            <td data-beat="2"></td>
+                            <td data-beat="3">
+                                S
+                                <span class="supsub"
+                                    ><sup>B</sup><sub>B</sub></span
+                                >
+                            </td>
+                            <td data-beat="4"></td>
+                            <td data-beat="5">
+                                I
+                                <span class="supsub"
+                                    ><sup>C</sup><sub>C</sub></span
+                                >
+                            </td>
+                            <td data-beat="6"></td>
+                            <td>&rarr; M</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="cycle-container">
                 Cycle: <span class="cycle"></span>
             </div>

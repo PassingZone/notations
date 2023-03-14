@@ -1,7 +1,7 @@
 import { capture } from "./screenshot.js";
 
 let selectedIndex = 0;
-let allArrows = [];
+let allTempElements = [];
 
 const notations = [
     ["cA sA iA", "#1.1", "Aidan"],
@@ -45,7 +45,6 @@ patternSelect.addEventListener("change", () => {
     selectedIndex = parseInt(patternSelect.value);
     applyNotation(selectedIndex);
 });
-applyNotation(0);
 
 const mainArea = document.querySelector("main");
 document.querySelector(".screenshot-button").addEventListener("click", () => {
@@ -80,8 +79,9 @@ function applyNotation (patternIndex) {
     const notationBeats = value.split(" ");
     const manipCells = document.querySelectorAll(".m-line td");
 
-    allArrows.forEach(arrow => arrow.remove());
-    allArrows = [];
+    const tableContainer = document.querySelector(".table-container");
+    allTempElements.forEach(arrow => arrow.remove());
+    allTempElements = [];
 
     for (let i = 0; i < notationBeats.length; i++) {
         const instruction = notationBeats[i][0].toUpperCase();
@@ -104,23 +104,49 @@ function applyNotation (patternIndex) {
             `table tr[data-juggler="${toJuggler}"] td[data-beat="${beat + 1}"]`,
         );
 
+        const svg = getOrCreateSVG(tableContainer, fromJuggler, beat);
         const arrow = arrowLine(
-            getCenterPoint(fromCell, 0.2),
-            getCenterPoint(toCell, -0.2),
+            getCenterPoint(fromCell, 0.2, tableContainer.clientWidth),
+            getCenterPoint(toCell, -0.2, tableContainer.clientWidth),
             {
                 curvature: 0,
                 color: "orange",
-                thickness: 1.5,
+                thickness: 1.5 / tableContainer.clientWidth,
+                svgParentSelector: `svg.${Array.from(svg.classList).join(".")}`,
             },
         );
-        allArrows.push(arrow);
+        allTempElements.push(arrow);
     }
 }
-function getCenterPoint (elem, bias) {
-    const rect = elem.getBoundingClientRect();
+
+function getOrCreateSVG (tableContainer, fromJuggler, beat) {
+    const existing = tableContainer.querySelector(
+        `[data-juggler="${fromJuggler}"] svg[data-beat="${beat}"]`,
+    );
+    if (existing) {
+        return existing;
+    }
+
+    // Wrapper only needed for fancy-hover selector compatibility.
+    const svgWrapper = document.createElement("div");
+    svgWrapper.setAttribute("data-juggler", fromJuggler);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const svgClass = `${fromJuggler}${beat}`;
+    svg.setAttribute("viewBox", "0 0 1 1"); // uniform coords for scaling
+    svg.setAttribute("preserveAspectRatio", "xMinYMin slice");
+    svg.classList.add("svg-arrows");
+    svg.classList.add(svgClass);
+    svg.setAttribute("data-beat", beat);
+
+    svgWrapper.appendChild(svg);
+    tableContainer.appendChild(svgWrapper);
+    return svg;
+}
+
+function getCenterPoint (elem, bias, scale) {
     return {
-        x: rect.x + rect.width * (0.5 + bias),
-        y: rect.y + rect.height / 2,
+        x: (elem.offsetLeft + elem.offsetWidth * (0.5 + bias)) / scale,
+        y: (elem.offsetTop + elem.offsetHeight / 2) / scale,
     };
 }
 
@@ -140,3 +166,5 @@ function getSourceOfThrow (beatIndex, toJuggler) {
     // Self throw
     return toJuggler;
 }
+
+applyNotation(0);

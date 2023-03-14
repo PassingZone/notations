@@ -97,37 +97,38 @@ td:last-child {
 }
 
 /* Fancy hover */
-table:has(.m-line .fancy-hover:hover) tr:not(.m-line) td[data-beat] {
+.table-container:has(.m-line .fancy-hover:hover) tr:not(.m-line) td[data-beat],
+.table-container:has(.m-line .fancy-hover:hover) .svg-arrows {
     opacity: 0.3;
 }
 
-table:has(.m-line td[data-from="A"][data-beat="1"]:hover)
-    tr[data-juggler="A"]
-    td[data-beat="1"],
-table:has(.m-line td[data-from="A"][data-beat="3"]:hover)
-    tr[data-juggler="A"]
-    td[data-beat="3"],
-table:has(.m-line td[data-from="A"][data-beat="5"]:hover)
-    tr[data-juggler="A"]
-    td[data-beat="5"],
-table:has(.m-line td[data-from="B"][data-beat="1"]:hover)
-    tr[data-juggler="B"]
-    td[data-beat="1"],
-table:has(.m-line td[data-from="B"][data-beat="3"]:hover)
-    tr[data-juggler="B"]
-    td[data-beat="3"],
-table:has(.m-line td[data-from="B"][data-beat="5"]:hover)
-    tr[data-juggler="B"]
-    td[data-beat="5"],
-table:has(.m-line td[data-from="C"][data-beat="1"]:hover)
-    tr[data-juggler="C"]
-    td[data-beat="1"],
-table:has(.m-line td[data-from="C"][data-beat="3"]:hover)
-    tr[data-juggler="C"]
-    td[data-beat="3"],
-table:has(.m-line td[data-from="C"][data-beat="5"]:hover)
-    tr[data-juggler="C"]
-    td[data-beat="5"] {
+.table-container:has(.m-line td[data-from="A"][data-beat="1"]:hover)
+    [data-juggler="A"]
+    [data-beat="1"],
+.table-container:has(.m-line td[data-from="A"][data-beat="3"]:hover)
+    [data-juggler="A"]
+    [data-beat="3"],
+.table-container:has(.m-line td[data-from="A"][data-beat="5"]:hover)
+    [data-juggler="A"]
+    [data-beat="5"],
+.table-container:has(.m-line td[data-from="B"][data-beat="1"]:hover)
+    [data-juggler="B"]
+    [data-beat="1"],
+.table-container:has(.m-line td[data-from="B"][data-beat="3"]:hover)
+    [data-juggler="B"]
+    [data-beat="3"],
+.table-container:has(.m-line td[data-from="B"][data-beat="5"]:hover)
+    [data-juggler="B"]
+    [data-beat="5"],
+.table-container:has(.m-line td[data-from="C"][data-beat="1"]:hover)
+    [data-juggler="C"]
+    [data-beat="1"],
+.table-container:has(.m-line td[data-from="C"][data-beat="3"]:hover)
+    [data-juggler="C"]
+    [data-beat="3"],
+.table-container:has(.m-line td[data-from="C"][data-beat="5"]:hover)
+    [data-juggler="C"]
+    [data-beat="5"] {
     opacity: 1;
     color: orange;
 }
@@ -137,4 +138,18 @@ table:has(.m-line td[data-from="C"][data-beat="5"]:hover)
 }
 .m-line .fancy-hover:hover {
     color: orange;
+}
+
+/* Arrows */
+.table-container {
+    position: relative;
+}
+.svg-arrows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: opacity 200ms linear;
 }
