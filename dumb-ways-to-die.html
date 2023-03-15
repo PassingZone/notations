@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Righteous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Raleway:wght@300-800"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/arrow-line/dist/arrow-line.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <title>Interactive pattern notations - passing.zone</title>
+    </head>
+    <body>
+        <main>
+            <h2 class="pattern-name">Dumb Ways to die</h2>
+            <h3 class="pattern-number"></h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr class="line__hands line__underline">
+                            <th></th>
+                            <th>R</th>
+                            <th>L</th>
+                            <th>R</th>
+                            <th>L</th>
+                            <th>R</th>
+                            <th>L</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-juggler="A">
+                            <td>A</td>
+                            <td data-beat="1">$$P_B$$</td>
+                            <td data-beat="2">S</td>
+                            <td data-beat="3">$$P_C$$</td>
+                            <td data-beat="4">S</td>
+                            <td data-beat="5">$$P_B$$</td>
+                            <td data-beat="6">S</td>
+                            <td>&rarr; B</td>
+                        </tr>
+                        <tr data-juggler="B">
+                            <td>B</td>
+                            <td data-beat="1">$$P_A$$</td>
+                            <td data-beat="2">S</td>
+                            <td data-beat="3">S</td>
+                            <td data-beat="4">S</td>
+                            <td data-beat="5">$$P_A$$</td>
+                            <td data-beat="6">S</td>
+                            <td>&rarr; C</td>
+                        </tr>
+                        <tr data-juggler="C">
+                            <td>C</td>
+                            <td data-beat="1">S</td>
+                            <td data-beat="2">S</td>
+                            <td data-beat="3">$$P_A$$</td>
+                            <td data-beat="4">S</td>
+                            <td data-beat="5">S</td>
+                            <td data-beat="6">S</td>
+                            <td>&rarr; A</td>
+                        </tr>
+                        <tr class="line__m">
+                            <td>M</td>
+                            <td data-beat="1"></td>
+                            <td data-beat="2"></td>
+                            <td data-beat="3"></td>
+                            <td data-beat="4"></td>
+                            <td data-beat="5"></td>
+                            <td data-beat="6"></td>
+                            <td>&rarr; M</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cycle-container">
+                Cycle: <span class="cycle"></span>
+            </div>
+        </main>
+        <div class="settings">
+            <select class="pattern-select">
+                <option disabled>...</option>
+            </select>
+            <button class="screenshot-button">Screenshot</button>
+            <button class="saveall-button">Save 'em all!</button>
+        </div>
+
+        <script src="script.js" type="module"></script>
+    </body>
+</html>
